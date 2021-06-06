@@ -41,26 +41,19 @@ class User {
     }
 
     //Discount
-    //(in base alla date_entry: lo shop è aperto dal 2016 e lo sconto si applica se l'utente è iscritto da almeno 3 anni)
-    //(in base alla year_of_birth: lo sconto si applica se l'utente si ha tra i 18 e i 25 anni)
-    //(in base alla date_entry e year_of_birth)
-    //(in base alla phone_number: lo sconto si applica se l'utente ha fornito il proprio numero di telefono)
-    //(in base alla date_entry, year_of_birth e phone_number)
+    //(se l'utente è nato fra il 96 e il 2003 e ci ha dato il numero di telefono)
+    //(se l'utente è nato fra il 96 e il 2003)
+    //(se l'utente ci ha dato il numero di telefono)
     public function getDiscount() {
-        if ($this->date_entry = 2016 || $this->date_entry = 2017 || $this->date_entry = 2018) {
-            return $this->discount = 30 . '% di sconto';
+        
+        if (($this->year_of_birth >=1996 && $this->year_of_birth <=2003) && ($this->phone_number)) {
+            return $this->discount = 45 . '% di sconto';
         }
-        elseif ($this->year_of_birth >=1996 && $this->year_of_birth <=2003) {
-            return $this->discount = 20 . '% di sconto';
-        }
-        elseif (($this->date_entry = 2016 || $this->date_entry = 2017 || $this->date_entry = 2018) && ($this->year_of_birth >=1996 && $this->year_of_birth <=2003)) {
-            return $this->discount = 40 . '% di sconto';
+        elseif ($this->year_of_birth >=1996 && $this->year_of_birth <=2003){
+            return $this->discount = 25 . '% di sconto';
         }
         elseif ($this->phone_number) {
             return $this->discount = 10 . '% di sconto';
-        }
-        elseif (($this->date_entry = 2016 || $this->date_entry = 2017 || $this->date_entry = 2018) && ($this->year_of_birth >=1996 && $this->year_of_birth <=2003) && ($this->phone_number)){
-            return $this->discount = 45 . '% di sconto';
         }
         else {
             return $this->discount = 0 . '% di sconto';
